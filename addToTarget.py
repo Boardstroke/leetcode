@@ -28,12 +28,22 @@ def searchInHash(h, target):
     if(complement in h.keys()):
       return [h[el], h[complement]]
 
+def onePassSolution(arr, target):
+  h = {}
+  for i, num in enumerate(arr):
+    complement = target - num
+    if complement not in h:
+      h[num] = i
+    else:
+      return [h[complement], i]
+
 
 def main():
   arr = [2,3,6,8]
 
   h = storageInHash(arr)
   print(searchInHash(h, 5))
+  print(onePassSolution(arr, 11))
 
 if __name__ == "__main__":
     main()
